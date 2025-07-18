@@ -1,11 +1,4 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "api/explain.js",
-      "use": "@vercel/node"
-    }
-  ],
   "functions": {
     "api/explain.js": {
       "maxDuration": 30
