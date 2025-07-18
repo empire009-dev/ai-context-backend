@@ -42,3 +42,4 @@ Backend service for the AI Context Dictionary Chrome extension.
 - 10 requests per minute per IP
 - 1000 character limit on input text
 - 400 token limit on responses
+# Trigger redeploy
