@@ -9,9 +9,14 @@
     "deploy": "vercel --prod"
   },
   "dependencies": {
-    "openai": "^4.0.0"
+    "openai": "^4.67.3"
   },
-  "keywords": ["ai", "context", "dictionary", "openai"],
+  "keywords": [
+    "ai",
+    "context",
+    "dictionary",
+    "openai"
+  ],
   "author": "Xinxin Li",
   "license": "MIT",
   "description": "Backend API for AI Context Dictionary Chrome Extension"
