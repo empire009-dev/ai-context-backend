@@ -1,15 +1,18 @@
 {
   "name": "ai-context-backend",
   "version": "1.0.0",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vercel dev",
+    "build": "vercel build",
+    "deploy": "vercel --prod"
   },
-  "keywords": [],
-  "author": "Xinxin Li",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
-    "openai": "^5.10.1"
-  }
+    "openai": "^4.0.0"
+  },
+  "keywords": ["ai", "context", "dictionary", "openai"],
+  "author": "Xinxin Li",
+  "license": "MIT",
+  "description": "Backend API for AI Context Dictionary Chrome Extension"
 }
