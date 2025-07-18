@@ -4,9 +4,9 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "dev": "vercel dev",
-    "build": "vercel build",
-    "deploy": "vercel --prod"
+    "dev": "npx vercel dev",
+    "build": "npx vercel build",
+    "deploy": "npx vercel --prod"
   },
   "dependencies": {
     "openai": "^4.67.3"
@@ -19,5 +19,8 @@
   ],
   "author": "Xinxin Li",
   "license": "MIT",
-  "description": "Backend API for AI Context Dictionary Chrome Extension"
+  "description": "Backend API for AI Context Dictionary Chrome Extension",
+  "devDependencies": {
+    "vercel": "^44.5.0"
+  }
 }
