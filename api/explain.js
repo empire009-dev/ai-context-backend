@@ -12,18 +12,18 @@ const RATE_LIMIT_WINDOW = 60 * 1000; // 1 minute
 function isRateLimited(ip) {
     const now = Date.now();
     const userRequests = rateLimitMap.get(ip) || [];
-    
+
     // Remove old requests outside the window
     const validRequests = userRequests.filter(time => now - time < RATE_LIMIT_WINDOW);
-    
+
     if (validRequests.length >= RATE_LIMIT) {
         return true;
     }
-    
+
     // Add current request
     validRequests.push(now);
     rateLimitMap.set(ip, validRequests);
-    
+
     return false;
 }
 
@@ -44,15 +44,15 @@ export default async function handler(req, res) {
 
     try {
         // Get client IP for rate limiting
-        const clientIP = req.headers['x-forwarded-for'] || 
-                        req.headers['x-real-ip'] || 
-                        req.connection?.remoteAddress || 
-                        'unknown';
+        const clientIP = req.headers['x-forwarded-for'] ||
+            req.headers['x-real-ip'] ||
+            req.connection?.remoteAddress ||
+            'unknown';
 
         // Check rate limit
         if (isRateLimited(clientIP)) {
-            return res.status(429).json({ 
-                error: 'Rate limit exceeded. Please try again later.' 
+            return res.status(429).json({
+                error: 'Rate limit exceeded. Please try again later.'
             });
         }
 
@@ -109,12 +109,12 @@ export default async function handler(req, res) {
 
     } catch (error) {
         console.error('API Error:', error);
-        
+
         // Handle specific OpenAI errors
         if (error.code === 'insufficient_quota') {
             return res.status(503).json({ error: 'Service temporarily unavailable. Please try again later.' });
         }
-        
+
         if (error.code === 'rate_limit_exceeded') {
             return res.status(429).json({ error: 'Service is busy. Please try again in a moment.' });
         }
